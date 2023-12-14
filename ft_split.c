@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ymomen <ymomen@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lj9 <lj9@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 23:23:44 by ymomen            #+#    #+#             */
-/*   Updated: 2023/12/13 23:24:10 by ymomen           ###   ########.fr       */
+/*   Updated: 2023/12/14 23:09:13 by lj9              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,12 @@ static int	contdel(char const *s, char c)
 	return (rst);
 }
 
-static char	**freet(char **ptr, int i)
+char	**freet(char **ptr, int i)
 {
-	while (i >= 0)
+	while (ptr && i >= 0)
 		free (ptr[i--]);
-	free (ptr);
+	if (ptr)
+		free (ptr);
 	return (NULL);
 }
 
@@ -84,9 +85,7 @@ char	**ft_split(char const *s, char c)
 {
 	int		count_words;
 	char	**ptr;
-	int		i;
 
-	i = 0;
 	if (!s)
 		return (NULL);
 	count_words = contdel(s, c);

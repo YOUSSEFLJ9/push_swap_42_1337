@@ -3,16 +3,37 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ymomen <ymomen@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lj9 <lj9@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 20:26:46 by ymomen            #+#    #+#             */
-/*   Updated: 2023/12/13 23:22:29 by ymomen           ###   ########.fr       */
+/*   Updated: 2023/12/14 23:07:25 by lj9              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_atoi(const char *str, int *check)
+int	ft_isdigit(int c)
+{
+	if (c >= 48 && c <= 57)
+		return (1);
+	return (0);
+}
+
+int	ft_strchr(const char *s, int c)
+{
+	int	i;
+
+	i = 0;
+	while (s && s[i])
+	{
+		if (s[i] == (char)c)
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
+int	ft_atoi(const char *str)
 {
 	int	sing;
 	int	nb;
@@ -36,7 +57,7 @@ int	ft_atoi(const char *str, int *check)
 		nb = (nb * 10) + (str[i] - 48);
 		i++;
 	}
-	if (nb == 0 && str[0] != '0' || (!ft_isdigit(str[i]) && str[i]))
+	if ((nb == 0 && str[0] != '0') || (!ft_isdigit(str[i]) && str[i]))
 		error_input();
 	return (nb * sing);
 }

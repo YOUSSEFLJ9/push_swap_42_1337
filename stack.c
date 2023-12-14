@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ymomen <ymomen@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lj9 <lj9@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 18:42:07 by ymomen            #+#    #+#             */
-/*   Updated: 2023/12/13 22:58:57 by ymomen           ###   ########.fr       */
+/*   Updated: 2023/12/14 22:58:50 by lj9              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,19 +69,26 @@ void vv(void)
 int	main(int ac, char **av)
 {
 	t_stack	*stack;
-	int		check_nb;
-	int		numb;
+	int		i;
+	char	**splited;
 
-	atexit(vv);
+	//atexit(vv);
 	stack = NULL;
-	check_nb = 1;
 	if (ac != 1)
 	{
 		av++;
 		while (*av)
 		{
-			numb = ft_atoi(*av, &check_nb);
-			push_stack(&stack, numb);
+			i = 0;
+			if (ft_strchr(*av, ' '))
+			{
+				splited = ft_split(*av, ' ');
+				while(splited && splited[i])
+					push_stack(&stack, ft_atoi(splited[i++]));
+				freet(splited, i);
+			}
+			else
+				push_stack(&stack, ft_atoi(*av));
 			av++;
 		}
 	}
