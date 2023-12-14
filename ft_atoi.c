@@ -6,7 +6,7 @@
 /*   By: lj9 <lj9@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 20:26:46 by ymomen            #+#    #+#             */
-/*   Updated: 2023/12/14 23:07:25 by lj9              ###   ########.fr       */
+/*   Updated: 2023/12/14 23:19:20 by lj9              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	ft_strchr(const char *s, int c)
 	return (0);
 }
 
-int	ft_atoi(const char *str)
+int	ft_atoi(const char *str, t_stack **stack)
 {
 	int	sing;
 	int	nb;
@@ -43,7 +43,7 @@ int	ft_atoi(const char *str)
 	sing = 1;
 	i = 0;
 	if (!str || !str[0])
-		error_input();
+		error_input(stack);
 	if (str[i] == '-' || str[i] == '+')
 	{
 		if (str[i++] == '-')
@@ -53,11 +53,11 @@ int	ft_atoi(const char *str)
 	{
 		if (nb > MAX_INT || (nb == MAX_INT && str[i] - '0' > 7 && sing == 1)
 			|| (nb == MAX_INT && str[i] - '0' > 8))
-			error_input();
+			error_input(stack);
 		nb = (nb * 10) + (str[i] - 48);
 		i++;
 	}
 	if ((nb == 0 && str[0] != '0') || (!ft_isdigit(str[i]) && str[i]))
-		error_input();
+		error_input(stack);
 	return (nb * sing);
 }

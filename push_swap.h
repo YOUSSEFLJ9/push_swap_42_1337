@@ -6,7 +6,7 @@
 /*   By: lj9 <lj9@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 18:39:33 by ymomen            #+#    #+#             */
-/*   Updated: 2023/12/14 23:02:52 by lj9              ###   ########.fr       */
+/*   Updated: 2023/12/14 23:27:31 by lj9              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@ typedef struct s_stack
 /* FUNCTIONS */
 char	**freet(char **ptr, int i);
 char	**ft_split(char const *s, char c);
-int	ft_isdigit(int c);
-int	ft_strchr(const char *s, int c);
-void	error_input(void);
-int		ft_atoi(const char *str);
+int		ft_isdigit(int c);
+int		ft_strchr(const char *s, int c);
+void	error_input(t_stack **stack);
+int		ft_atoi(const char *str, t_stack **stack);
 int		pop_stack(t_stack **stack);
 int		push_stack(t_stack **stack, int num);
 t_stack	*new_node(int num);

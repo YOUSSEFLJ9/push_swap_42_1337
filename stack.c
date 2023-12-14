@@ -6,7 +6,7 @@
 /*   By: lj9 <lj9@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 18:42:07 by ymomen            #+#    #+#             */
-/*   Updated: 2023/12/14 22:58:50 by lj9              ###   ########.fr       */
+/*   Updated: 2023/12/14 23:28:50 by lj9              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,13 +55,15 @@ int	pop_stack(t_stack **stack)
 	return (1);
 }
 
-void	error_input(void)
+void	error_input(t_stack **stack)
 {
+	while (pop_stack(stack) == 1)
+		;
 	write(1, "error input!\n", 13);
 	exit (-1);
 }
 
-void vv(void)
+void	vv(void)
 {
 	system("leaks stack");
 }
@@ -83,12 +85,12 @@ int	main(int ac, char **av)
 			if (ft_strchr(*av, ' '))
 			{
 				splited = ft_split(*av, ' ');
-				while(splited && splited[i])
-					push_stack(&stack, ft_atoi(splited[i++]));
+				while (splited && splited[i])
+					push_stack(&stack, ft_atoi(splited[i++], &stack));
 				freet(splited, i);
 			}
 			else
-				push_stack(&stack, ft_atoi(*av));
+				push_stack(&stack, ft_atoi(*av, &stack));
 			av++;
 		}
 	}
