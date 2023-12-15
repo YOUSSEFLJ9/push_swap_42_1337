@@ -6,7 +6,7 @@
 /*   By: ymomen <ymomen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 18:42:07 by ymomen            #+#    #+#             */
-/*   Updated: 2023/12/15 17:54:39 by ymomen           ###   ########.fr       */
+/*   Updated: 2023/12/15 20:54:38 by ymomen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ int	main(int ac, char **av)
 
 	atexit(vv);
 	stack = NULL;
+	stack_b = NULL;
 	if (ac != 1)
 	{
 		av++;
@@ -110,6 +111,12 @@ int	main(int ac, char **av)
 	}
 	push(&stack_b, &stack);
 	push(&stack_b, &stack);
+	push(&stack_b, &stack);
+	push(&stack_b, &stack);
+	push(&stack_b, &stack);
+	push(&stack_b, &stack);
+	push(&stack_b, &stack);
+	push(&stack_b, &stack);
 	while (stack)
 	{
 		printf("%d\n", stack->num);
@@ -119,7 +126,7 @@ int	main(int ac, char **av)
 	while (stack_b)
 	{
 		printf("%d\n", stack_b->num);
-		pop_stack(&stack);
+		pop_stack(&stack_b);
 	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: ymomen <ymomen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 15:25:36 by ymomen            #+#    #+#             */
-/*   Updated: 2023/12/15 17:51:40 by ymomen           ###   ########.fr       */
+/*   Updated: 2023/12/15 20:48:37 by ymomen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,18 @@ void	push(t_stack **to, t_stack **from)
 		return ;
 	from_frst = *from;
 	*from = (*from)->next;
-	(*from)->prev = NULL;
-	from_frst->next = *to;
-	(*to)->prev = from_frst;
-	*to = from_frst;
+	if (*from)
+		(*from)->prev = NULL;
+	if (!*to)
+	{
+		from_frst->next = NULL;
+		from_frst->prev = NULL;
+		*to = from_frst;
+	}
+	else
+	{
+		from_frst->next = *to;
+		(*to)->prev = from_frst;
+		*to = from_frst;
+	}
 }
