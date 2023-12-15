@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lj9 <lj9@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: ymomen <ymomen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 23:23:44 by ymomen            #+#    #+#             */
-/*   Updated: 2023/12/14 23:09:13 by lj9              ###   ########.fr       */
+/*   Updated: 2023/12/15 14:07:18 by ymomen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,10 @@ static int	contdel(char const *s, char c)
 
 char	**freet(char **ptr, int i)
 {
-	while (ptr && i >= 0)
+	i--;
+	while (i >= 0)
 		free (ptr[i--]);
-	if (ptr)
-		free (ptr);
+	free (ptr);
 	return (NULL);
 }
 
@@ -48,6 +48,8 @@ static char	*ft_monstrdup(const char *s1, size_t size)
 		return (NULL);
 	while (i < size)
 	{
+		if (!ft_isdigit(s1[i]) && s1[i] && s1[i] != '+' && s1[i] != '-')
+			return (free(dup), NULL);
 		dup[i] = s1[i];
 		i++;
 	}
