@@ -6,7 +6,7 @@
 /*   By: ymomen <ymomen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 18:42:07 by ymomen            #+#    #+#             */
-/*   Updated: 2023/12/15 20:54:38 by ymomen           ###   ########.fr       */
+/*   Updated: 2023/12/16 00:02:57 by ymomen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,13 +81,13 @@ void	vv(void)
 
 int	main(int ac, char **av)
 {
-	t_stack	*stack;
+	t_stack	*stack_a;
 	t_stack	*stack_b;
 	int		i;
 	char	**splited;
 
-	atexit(vv);
-	stack = NULL;
+	//atexit(vv);
+	stack_a = NULL;
 	stack_b = NULL;
 	if (ac != 1)
 	{
@@ -99,28 +99,33 @@ int	main(int ac, char **av)
 			{
 				splited = ft_split(*av, ' ');
 				if (!splited)
-					error_input(&stack);
+					error_input(&stack_a);
 				while (splited[i])
-					push_stack(&stack, ft_atoi(splited[i++], &stack));
+					push_stack(&stack_a, ft_atoi(splited[i++], &stack_a));
 				freet(splited, i);
 			}
 			else
-				push_stack(&stack, ft_atoi(*av, &stack));
+				push_stack(&stack_a, ft_atoi(*av, &stack_a));
 			av++;
 		}
 	}
-	push(&stack_b, &stack);
-	push(&stack_b, &stack);
-	push(&stack_b, &stack);
-	push(&stack_b, &stack);
-	push(&stack_b, &stack);
-	push(&stack_b, &stack);
-	push(&stack_b, &stack);
-	push(&stack_b, &stack);
-	while (stack)
+	swap(&stack_a);
+	push(&stack_b, &stack_a);
+	push(&stack_b, &stack_a);
+	push(&stack_b, &stack_a);
+	retate(&stack_a);
+	retate(&stack_b);
+	rev_retate(&stack_a);
+	rev_retate(&stack_b);
+	swap(&stack_a);
+	push(&stack_a, &stack_b);
+	push(&stack_a, &stack_b);
+	push(&stack_a, &stack_b);
+
+	while (stack_a)
 	{
-		printf("%d\n", stack->num);
-		pop_stack(&stack);
+		printf("%d\n", stack_a->num);
+		pop_stack(&stack_a);
 	}
 	printf("\n--------------\n");
 	while (stack_b)

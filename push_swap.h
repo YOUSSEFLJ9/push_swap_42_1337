@@ -25,6 +25,8 @@ typedef struct s_stack
 }	t_stack;
 
 /* FUNCTIONS */
+void	rev_retate(t_stack **stack);
+void	retate(t_stack **stack);
 char	**freet(char **ptr, int i);
 char	**ft_split(char const *s, char c);
 int		ft_isdigit(int c);
