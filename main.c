@@ -6,7 +6,7 @@
 /*   By: ymomen <ymomen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 15:24:51 by ymomen            #+#    #+#             */
-/*   Updated: 2023/12/16 16:21:43 by ymomen           ###   ########.fr       */
+/*   Updated: 2023/12/16 16:54:03 by ymomen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,11 @@ int	main(int ac, char **av)
 	stack_b = NULL;
 	//atexit(vv);
 	if (ac != 1)
-		init_stack_a(&stack_a, ++av);
+		ft_init_stack_a(&stack_a, ++av);
+	if (ft_is_sorted(stack_a))
+		printf("the stack is sorted :)\n");
+	else
+		printf("the stack not yet sorted :(\n");
 	while (stack_a)
 	{
 		printf("%d\n", stack_a->num);

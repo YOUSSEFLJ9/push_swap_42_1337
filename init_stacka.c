@@ -6,13 +6,13 @@
 /*   By: ymomen <ymomen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 15:31:16 by ymomen            #+#    #+#             */
-/*   Updated: 2023/12/16 16:19:12 by ymomen           ###   ########.fr       */
+/*   Updated: 2023/12/16 16:51:37 by ymomen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	init_stack_a(t_stack **stack_a, char **av)
+void	ft_init_stack_a(t_stack **stack_a, char **av)
 {
 	int		i;
 	char	**splited;
@@ -40,8 +40,17 @@ void	init_stack_a(t_stack **stack_a, char **av)
 	}
 }
 
-bool	is_sorted(t_stack *stack)
+int	ft_is_sorted(t_stack *stack)
 {
-	(void)stack;
+	t_stack	*current;
+
+	current = stack;
+	while (stack && stack->next)
+	{
+		stack = stack->next;
+		if (current->num > stack->num)
+			return (0);
+		current = stack;
+	}
 	return (1);
 }
