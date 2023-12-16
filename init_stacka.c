@@ -6,38 +6,39 @@
 /*   By: ymomen <ymomen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 15:31:16 by ymomen            #+#    #+#             */
-/*   Updated: 2023/12/16 16:51:37 by ymomen           ###   ########.fr       */
+/*   Updated: 2023/12/16 19:22:45 by ymomen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_init_stack_a(t_stack **stack_a, char **av)
+int	ft_init_stack_a(t_stack **stack_a, char **av)
 {
 	int		i;
 	char	**splited;
+	int		elements;
 
+	elements = 0;
 	if (!search_wrong_input(av))
-		error_input(stack_a);
+		error_and_exit(stack_a, "Error\n", 255);
 	while (*av)
 	{
 		i = 0;
-		if (ft_strchr(*av, ' '))
+		if (ft_strchr(*av, ' ') && --elements)
 		{
 			splited = ft_split(*av, ' ');
 			if (!splited)
-			{
-				write(2, "not enough space to allocate\n", 30);
-				exit(EXIT_FAILURE);
-			}
+				error_and_exit(stack_a, "not enough space to allocate\n", 1);
 			while (splited[i])
 				push_stack(stack_a, ft_atoi(splited[i++], stack_a));
 			freet(splited, i);
 		}
 		else
 			push_stack(stack_a, ft_atoi(*av, stack_a));
+		elements += i + 1;
 		av++;
 	}
+	return (elements);
 }
 
 int	ft_is_sorted(t_stack *stack)
