@@ -6,7 +6,7 @@
 /*   By: ymomen <ymomen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 23:23:44 by ymomen            #+#    #+#             */
-/*   Updated: 2023/12/15 14:07:18 by ymomen           ###   ########.fr       */
+/*   Updated: 2023/12/16 13:50:03 by ymomen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ char	**freet(char **ptr, int i)
 	i--;
 	while (i >= 0)
 		free (ptr[i--]);
-	free (ptr);
+	if (ptr)
+		free (ptr);
 	return (NULL);
 }
 
@@ -48,8 +49,6 @@ static char	*ft_monstrdup(const char *s1, size_t size)
 		return (NULL);
 	while (i < size)
 	{
-		if (!ft_isdigit(s1[i]) && s1[i] && s1[i] != '+' && s1[i] != '-')
-			return (free(dup), NULL);
 		dup[i] = s1[i];
 		i++;
 	}

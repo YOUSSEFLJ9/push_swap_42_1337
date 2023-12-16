@@ -6,16 +6,18 @@
 /*   By: ymomen <ymomen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 18:39:33 by ymomen            #+#    #+#             */
-/*   Updated: 2023/12/15 17:52:12 by ymomen           ###   ########.fr       */
+/*   Updated: 2023/12/16 16:17:54 by ymomen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 # define MAX_INT 214748364
+
 # include <unistd.h>
 # include <stdlib.h>
 # include <limits.h>
+# include <stdbool.h>
 /* STRUCT */
 typedef struct s_stack
 {
@@ -25,20 +27,22 @@ typedef struct s_stack
 }	t_stack;
 
 /* FUNCTIONS */
-void	rev_retate(t_stack **stack);
-void	retate(t_stack **stack);
+void	init_stack_a(t_stack **stack_a, char **av);
 char	**freet(char **ptr, int i);
 char	**ft_split(char const *s, char c);
 int		ft_isdigit(int c);
 int		ft_strchr(const char *s, int c);
-void	error_input(t_stack **stack);
 int		ft_atoi(const char *str, t_stack **stack);
 /* STACK_ */
 int		pop_stack(t_stack **stack);
 int		push_stack(t_stack **stack, int num);
+int		search_wrong_input(char **av);
+void	error_input(t_stack **stack);
 t_stack	*new_node(int num);
 /* COMMANDS */
 void	swap(t_stack **stack);
 void	push(t_stack **to, t_stack **from);
+void	retate(t_stack **stack);
+void	rev_retate(t_stack **stack);
 
 #endif

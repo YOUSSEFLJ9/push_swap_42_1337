@@ -6,32 +6,11 @@
 /*   By: ymomen <ymomen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 20:26:46 by ymomen            #+#    #+#             */
-/*   Updated: 2023/12/15 22:13:27 by ymomen           ###   ########.fr       */
+/*   Updated: 2023/12/16 15:22:04 by ymomen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-int	ft_isdigit(int c)
-{
-	if (c >= 48 && c <= 57)
-		return (1);
-	return (0);
-}
-
-int	ft_strchr(const char *s, int c)
-{
-	int	i;
-
-	i = 0;
-	while (s && s[i])
-	{
-		if (s[i] == (char)c)
-			return (1);
-		i++;
-	}
-	return (0);
-}
 
 int	ft_atoi(const char *str, t_stack **stack)
 {
