@@ -6,7 +6,7 @@
 /*   By: ymomen <ymomen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 15:31:16 by ymomen            #+#    #+#             */
-/*   Updated: 2023/12/16 19:22:45 by ymomen           ###   ########.fr       */
+/*   Updated: 2023/12/16 19:58:21 by ymomen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	ft_init_stack_a(t_stack **stack_a, char **av)
 
 	elements = 0;
 	if (!search_wrong_input(av))
-		error_and_exit(stack_a, "Error\n", 255);
+		error_and_exit(stack_a);
 	while (*av)
 	{
 		i = 0;
@@ -28,7 +28,7 @@ int	ft_init_stack_a(t_stack **stack_a, char **av)
 		{
 			splited = ft_split(*av, ' ');
 			if (!splited)
-				error_and_exit(stack_a, "not enough space to allocate\n", 1);
+				error_and_exit(stack_a);
 			while (splited[i])
 				push_stack(stack_a, ft_atoi(splited[i++], stack_a));
 			freet(splited, i);

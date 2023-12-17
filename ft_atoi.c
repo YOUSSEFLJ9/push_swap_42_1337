@@ -6,7 +6,7 @@
 /*   By: ymomen <ymomen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 20:26:46 by ymomen            #+#    #+#             */
-/*   Updated: 2023/12/16 19:18:15 by ymomen           ###   ########.fr       */
+/*   Updated: 2023/12/16 19:58:00 by ymomen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	ft_atoi(const char *str, t_stack **stack)
 	sing = 1;
 	i = 0;
 	if (!str || !str[0])
-		error_and_exit(stack, "Error\n", 255);
+		error_and_exit(stack);
 	if (str[i] == '-' || str[i] == '+')
 	{
 		if (str[i++] == '-')
@@ -32,11 +32,11 @@ int	ft_atoi(const char *str, t_stack **stack)
 	{
 		if (nb > MAX_INT || (nb == MAX_INT && str[i] - '0' > 7 && sing == 1)
 			|| (nb == MAX_INT && str[i] - '0' > 8))
-			error_and_exit(stack, "Error\n", 255);
+			error_and_exit(stack);
 		nb = (nb * 10) + (str[i] - 48);
 		i++;
 	}
 	if ((nb == 0 && str[0] != '0') || (!ft_isdigit(str[i]) && str[i]))
-		error_and_exit(stack, "Error\n", 255);
+		error_and_exit(stack);
 	return (nb * sing);
 }

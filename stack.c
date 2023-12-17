@@ -6,7 +6,7 @@
 /*   By: ymomen <ymomen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 18:42:07 by ymomen            #+#    #+#             */
-/*   Updated: 2023/12/16 19:20:22 by ymomen           ###   ########.fr       */
+/*   Updated: 2023/12/16 19:58:35 by ymomen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,13 @@ int	push_stack(t_stack **stack, int num)
 	while (head)
 	{
 		if (head->num == num)
-			error_and_exit(stack, "Error\n", 255);
+			error_and_exit(stack);
 		head = head->next;
 	}
 	new = new_node(num);
 	head = *stack;
 	if (!new)
-		error_and_exit(stack, "not enough space to allocate\n", 1);
+		error_and_exit(stack);
 	else if (!*stack)
 		*stack = new;
 	else
@@ -65,12 +65,12 @@ int	pop_stack(t_stack **stack)
 	return (1);
 }
 
-void	error_and_exit(t_stack **stack, char *msg, int exitstatus)
+void	error_and_exit(t_stack **stack)
 {
 	while (pop_stack(stack) == 1)
 		;
-	write(2, msg, ft_strlen(msg));
-	exit (exitstatus);
+	write(2, "Error\n", 6);
+	exit (-1);
 }
 
 int	search_wrong_input(char **av)
