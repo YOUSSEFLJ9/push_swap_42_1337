@@ -6,7 +6,7 @@
 /*   By: ymomen <ymomen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 18:39:33 by ymomen            #+#    #+#             */
-/*   Updated: 2023/12/16 19:56:40 by ymomen           ###   ########.fr       */
+/*   Updated: 2023/12/22 21:56:12 by ymomen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,12 @@ typedef struct s_stack
 	struct s_stack	*next;
 	struct s_stack	*prev;
 	int				num;
+	int				index;
+	bool			lis;
 }	t_stack;
 
 /* FUNCTIONS */
+int		LIS(t_stack *stack, int elements);
 int		ft_is_sorted(t_stack *stack);
 int		ft_init_stack_a(t_stack **stack_a, char **av);
 char	**freet(char **ptr, int i);

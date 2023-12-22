@@ -6,7 +6,7 @@
 /*   By: ymomen <ymomen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 18:42:07 by ymomen            #+#    #+#             */
-/*   Updated: 2023/12/16 19:58:35 by ymomen           ###   ########.fr       */
+/*   Updated: 2023/12/20 05:07:25 by ymomen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,17 @@
 
 t_stack	*new_node(int num)
 {
-	t_stack	*node;
+	t_stack		*node;
+	static int	index;
 
 	node = (t_stack *)malloc(sizeof(t_stack));
 	if (!node)
 		return (NULL);
+	index++;
 	node->num = num;
 	node->next = NULL;
 	node->prev = NULL;
+	node->index = index;
 	return (node);
 }
 
