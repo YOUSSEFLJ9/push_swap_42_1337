@@ -6,7 +6,7 @@
 /*   By: ymomen <ymomen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 15:24:51 by ymomen            #+#    #+#             */
-/*   Updated: 2023/12/22 21:55:35 by ymomen           ###   ########.fr       */
+/*   Updated: 2023/12/23 13:58:35 by ymomen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	main(int ac, char **av)
 	stack_a = NULL;
 	stack_b = NULL;
 	elements = 0;
-	atexit(vv);
+	//atexit(vv);
 	if (ac != 1)
 		elements = ft_init_stack_a(&stack_a, ++av);
 	if (ft_is_sorted(stack_a))
@@ -37,7 +37,7 @@ int	main(int ac, char **av)
 	LIS(stack_a, elements);
 	while (stack_a)
 	{
-		printf("%d\n", stack_a->num);
+		printf("%d--->%s\n", stack_a->num, (stack_a->lis)? "yes":"no");
 		pop_stack(&stack_a);
 	}
 	return (0);
