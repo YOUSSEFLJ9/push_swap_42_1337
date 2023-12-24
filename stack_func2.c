@@ -1,16 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_stacka.c                                      :+:      :+:    :+:   */
+/*   stack_func2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ymomen <ymomen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 15:31:16 by ymomen            #+#    #+#             */
-/*   Updated: 2023/12/16 19:58:21 by ymomen           ###   ########.fr       */
+/*   Updated: 2023/12/24 18:44:04 by ymomen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	search_wrong_input(char **av)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	if (!av || !av[i])
+		return (0);
+	while (av[i])
+	{
+		j = 0;
+		while (av[i][j])
+		{
+			if (!ft_isdigit(av[i][j]) && av[i][j] && av[i][j] != '+'
+				&& av[i][j] != '-' && av[i][j] != ' ')
+				return (0);
+			j++;
+		}
+		i++;
+	}
+	return (1);
+}
 
 int	ft_init_stack_a(t_stack **stack_a, char **av)
 {
@@ -45,6 +68,8 @@ int	ft_is_sorted(t_stack *stack)
 {
 	t_stack	*current;
 
+	if (!stack)
+		return (1);
 	current = stack;
 	while (stack && stack->next)
 	{
@@ -54,4 +79,36 @@ int	ft_is_sorted(t_stack *stack)
 		current = stack;
 	}
 	return (1);
+}
+
+int	set_index(t_stack *stack)
+{
+	int		i;
+	t_stack	*tmp;
+
+	tmp = stack;
+	i = 0;
+	while (tmp)
+	{
+		tmp->index = i++;
+		tmp = tmp->next;
+	}
+	tmp = stack;
+	while (tmp)
+	{
+		if ((tmp->index + 1) <= (i / 2))
+			tmp->upofmed = 1;
+		else
+			tmp->upofmed = 0;
+		tmp = tmp->next;
+	}
+	return (i);
+}
+
+void	error_and_exit(t_stack **stack)
+{
+	while (pop_stack(stack) == 1)
+		;
+	write(2, "Error\n", 6);
+	exit (-1);
 }

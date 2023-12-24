@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack.c                                            :+:      :+:    :+:   */
+/*   stack_func.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ymomen <ymomen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 18:42:07 by ymomen            #+#    #+#             */
-/*   Updated: 2023/12/23 14:01:27 by ymomen           ###   ########.fr       */
+/*   Updated: 2023/12/24 18:47:12 by ymomen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stack	*new_node(int num)
+static t_stack	*new_node(int num)
 {
 	t_stack		*node;
 	static int	index;
@@ -69,33 +69,42 @@ int	pop_stack(t_stack **stack)
 	return (1);
 }
 
-void	error_and_exit(t_stack **stack)
+t_stack	*smallest(t_stack *stack)
 {
-	while (pop_stack(stack) == 1)
-		;
-	write(2, "Error\n", 6);
-	exit (-1);
+	t_stack	*smallest_one;
+	int		i;
+
+	if (!stack)
+		return (NULL);
+	i = 2147483647;
+	while (stack)
+	{
+		if (stack->num < i)
+		{
+			i = stack->num;
+			smallest_one = stack;
+		}
+		stack = stack->next;
+	}
+	return (smallest_one);
 }
 
-int	search_wrong_input(char **av)
+t_stack	*biggest(t_stack *stack)
 {
-	int	i;
-	int	j;
+	t_stack	*biggest_one;
+	int		i;
 
-	i = 0;
-	if (!av || !av[i])
-		return (0);
-	while (av[i])
+	if (!stack)
+		return (NULL);
+	i = -2147483648;
+	while (stack)
 	{
-		j = 0;
-		while (av[i][j])
+		if (stack->num > i)
 		{
-			if (!ft_isdigit(av[i][j]) && av[i][j] && av[i][j] != '+'
-				&& av[i][j] != '-' && av[i][j] != ' ')
-				return (0);
-			j++;
+			i = stack->num;
+			biggest_one = stack;
 		}
-		i++;
+		stack = stack->next;
 	}
-	return (1);
+	return (biggest_one);
 }

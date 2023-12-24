@@ -6,7 +6,7 @@
 /*   By: ymomen <ymomen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 18:39:33 by ymomen            #+#    #+#             */
-/*   Updated: 2023/12/23 13:59:08 by ymomen           ###   ########.fr       */
+/*   Updated: 2023/12/24 20:18:57 by ymomen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <stdlib.h>
 # include <limits.h>
 # include <stdbool.h>
-#include <stdio.h>
+# include <stdio.h>
 /* STRUCT */
 typedef struct s_stack
 {
@@ -27,27 +27,42 @@ typedef struct s_stack
 	int				num;
 	int				index;
 	bool			lis;
+	bool			upofmed;
 }	t_stack;
 
 /* FUNCTIONS */
-int		LIS(t_stack *stack, int elements);
-int		ft_is_sorted(t_stack *stack);
-int		ft_init_stack_a(t_stack **stack_a, char **av);
+void	lis(t_stack *stack, int elements);
+void	push_notlis(t_stack **stack_a, t_stack **stack_b);
 char	**freet(char **ptr, int i);
 char	**ft_split(char const *s, char c);
 int		ft_isdigit(int c);
 int		ft_strchr(const char *s, int c);
 int		ft_atoi(const char *str, t_stack **stack);
+int		search_wrong_input(char **av);
 /* STACK_ */
+t_stack	*biggest(t_stack *stack);
+t_stack	*smallest(t_stack *stack);
+int		set_index(t_stack *stack);
+int		ft_is_sorted(t_stack *stack);
+int		ft_init_stack_a(t_stack **stack_a, char **av);
 int		pop_stack(t_stack **stack);
 int		push_stack(t_stack **stack, int num);
-int		search_wrong_input(char **av);
 void	error_and_exit(t_stack **stack);
 t_stack	*new_node(int num);
 /* COMMANDS */
-void	swap(t_stack **stack);
-void	push(t_stack **to, t_stack **from);
-void	retate(t_stack **stack);
-void	rev_retate(t_stack **stack);
+void	ss(t_stack **stack_a, t_stack **stack_b, bool print);
+void	sb(t_stack **stack_b, bool print);
+void	sa(t_stack **stack_a, bool print);
+void	pb(t_stack **stack_b, t_stack **stack_a, bool print);
+void	pa(t_stack **stack_a, t_stack **stack_b, bool print);
+void	rr(t_stack **stack_a, t_stack **stack_b, bool print);
+void	rb(t_stack **stack_b, bool print);
+void	ra(t_stack **stack_a, bool print);
+void	rrr(t_stack **stack_a, t_stack **stack_b, bool print);
+void	rrb(t_stack **stack_b, bool print);
+void	rra(t_stack **stack_a, bool print);
+/* ALGO */
+void	sort_three(t_stack **stack);
+void	sort_two(t_stack **stack);
 
 #endif
