@@ -6,7 +6,7 @@
 /*   By: ymomen <ymomen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 18:39:33 by ymomen            #+#    #+#             */
-/*   Updated: 2023/12/24 20:18:57 by ymomen           ###   ########.fr       */
+/*   Updated: 2023/12/24 21:56:04 by ymomen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ typedef struct s_stack
 {
 	struct s_stack	*next;
 	struct s_stack	*prev;
+	struct s_stack *target;	
 	int				num;
 	int				index;
 	bool			lis;
@@ -32,7 +33,7 @@ typedef struct s_stack
 
 /* FUNCTIONS */
 void	lis(t_stack *stack, int elements);
-void	push_notlis(t_stack **stack_a, t_stack **stack_b);
+void	push_if_not_lis(t_stack **stack_a, t_stack **stack_b, int length);
 char	**freet(char **ptr, int i);
 char	**ft_split(char const *s, char c);
 int		ft_isdigit(int c);
@@ -48,7 +49,6 @@ int		ft_init_stack_a(t_stack **stack_a, char **av);
 int		pop_stack(t_stack **stack);
 int		push_stack(t_stack **stack, int num);
 void	error_and_exit(t_stack **stack);
-t_stack	*new_node(int num);
 /* COMMANDS */
 void	ss(t_stack **stack_a, t_stack **stack_b, bool print);
 void	sb(t_stack **stack_b, bool print);
