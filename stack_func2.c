@@ -6,7 +6,7 @@
 /*   By: ymomen <ymomen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 15:31:16 by ymomen            #+#    #+#             */
-/*   Updated: 2023/12/24 18:44:04 by ymomen           ###   ########.fr       */
+/*   Updated: 2023/12/25 18:13:00 by ymomen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ int	set_index(t_stack *stack)
 	tmp = stack;
 	while (tmp)
 	{
-		if ((tmp->index + 1) <= (i / 2))
+		if ((tmp->index) <= (i / 2))
 			tmp->upofmed = 1;
 		else
 			tmp->upofmed = 0;

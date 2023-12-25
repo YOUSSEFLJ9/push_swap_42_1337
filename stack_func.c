@@ -6,7 +6,7 @@
 /*   By: ymomen <ymomen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 18:42:07 by ymomen            #+#    #+#             */
-/*   Updated: 2023/12/24 18:47:12 by ymomen           ###   ########.fr       */
+/*   Updated: 2023/12/25 21:23:58 by ymomen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ static t_stack	*new_node(int num)
 	node->num = num;
 	node->next = NULL;
 	node->prev = NULL;
+	node->is_sheap = 0;
 	node->index = index;
 	node->lis = 0;
 	index++;

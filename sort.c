@@ -6,13 +6,13 @@
 /*   By: ymomen <ymomen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 19:41:42 by ymomen            #+#    #+#             */
-/*   Updated: 2023/12/24 19:55:38 by ymomen           ###   ########.fr       */
+/*   Updated: 2023/12/25 21:55:55 by ymomen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sort_three(t_stack **stack)
+void	sort_three(t_stack **stack_a)
 {
 	t_stack	*big;
 
@@ -23,4 +23,9 @@ void	sort_three(t_stack **stack)
 		rra(stack, 1);
 	if ((*stack)->num > (*stack)->next->num)
 		sa(stack, 1);
+}
+
+void	sort_5(t_stack **stack_a)
+{
+	
 }

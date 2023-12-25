@@ -6,7 +6,7 @@
 /*   By: ymomen <ymomen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 18:39:33 by ymomen            #+#    #+#             */
-/*   Updated: 2023/12/24 21:56:04 by ymomen           ###   ########.fr       */
+/*   Updated: 2023/12/25 22:16:29 by ymomen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ typedef struct s_stack
 	struct s_stack *target;	
 	int				num;
 	int				index;
+	int				price_to_push;
+	bool			is_sheap;
 	bool			lis;
 	bool			upofmed;
 }	t_stack;
@@ -63,6 +65,6 @@ void	rrb(t_stack **stack_b, bool print);
 void	rra(t_stack **stack_a, bool print);
 /* ALGO */
 void	sort_three(t_stack **stack);
-void	sort_two(t_stack **stack);
+
 
 #endif
