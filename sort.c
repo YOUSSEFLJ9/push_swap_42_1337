@@ -6,7 +6,7 @@
 /*   By: ymomen <ymomen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 19:41:42 by ymomen            #+#    #+#             */
-/*   Updated: 2023/12/25 21:55:55 by ymomen           ###   ########.fr       */
+/*   Updated: 2023/12/26 16:09:53 by ymomen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,25 @@ void	sort_three(t_stack **stack_a)
 {
 	t_stack	*big;
 
-	big = biggest(*stack);
-	if (*stack == big)
-		ra(stack, 1);
-	else if ((*stack)->next == big)
-		rra(stack, 1);
-	if ((*stack)->num > (*stack)->next->num)
-		sa(stack, 1);
+	big = biggest(*stack_a);
+	if (*stack_a == big)
+		ra(stack_a, 1);
+	else if ((*stack_a)->next == big)
+		rra(stack_a, 1);
+	if ((*stack_a)->num > (*stack_a)->next->num)
+		sa(stack_a, 1);
 }
 
-void	sort_5(t_stack **stack_a)
+void	sort_4_100(t_stack **stack_a, t_stack **stack_b, int length)
 {
+	t_stack	*tmp;
 	
+	tmp = *stack_a;
+	while(length-- > 3)
+	{
+		pb(stack_b, &tmp, 1);
+	}
+	if (!ft_is_sorted(tmp))
+		sort_three(&tmp);
+	*stack_a = tmp;
 }

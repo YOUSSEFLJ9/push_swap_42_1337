@@ -6,7 +6,7 @@
 /*   By: ymomen <ymomen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 18:39:33 by ymomen            #+#    #+#             */
-/*   Updated: 2023/12/25 22:16:29 by ymomen           ###   ########.fr       */
+/*   Updated: 2023/12/26 16:08:22 by ymomen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,6 @@ typedef struct s_stack
 }	t_stack;
 
 /* FUNCTIONS */
-void	lis(t_stack *stack, int elements);
-void	push_if_not_lis(t_stack **stack_a, t_stack **stack_b, int length);
 char	**freet(char **ptr, int i);
 char	**ft_split(char const *s, char c);
 int		ft_isdigit(int c);
@@ -65,6 +63,11 @@ void	rrb(t_stack **stack_b, bool print);
 void	rra(t_stack **stack_a, bool print);
 /* ALGO */
 void	sort_three(t_stack **stack);
+void	sort_sheapest_target(t_stack **stack_a,t_stack **stack_b, t_stack *sheap);
+void	lis(t_stack *stack, int elements);
+void	push_if_not_lis(t_stack **stack_a, t_stack **stack_b, int length);
+void	sort_4_100(t_stack **stack_a, t_stack **stack_b, int length);
+void	push_swap(t_stack **stack_a, t_stack **stack_b, int length);
 
 
 #endif

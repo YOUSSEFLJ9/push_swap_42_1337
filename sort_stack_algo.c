@@ -6,7 +6,7 @@
 /*   By: ymomen <ymomen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 18:50:14 by ymomen            #+#    #+#             */
-/*   Updated: 2023/12/25 22:01:52 by ymomen           ###   ########.fr       */
+/*   Updated: 2023/12/26 16:08:05 by ymomen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,10 @@ void	push_if_not_lis(t_stack **stack_a, t_stack **stack_b, int length)
 {
 	t_stack	*tmp;
 	int		i;
-	int		l;
-
 
 	i = 0;
-	l = length;
 	tmp = *stack_a;
-	while (tmp && l-- > 3)
+	while (tmp)
 	{
 		if (tmp->lis == 0)
 			pb(stack_b, &tmp, 1);
@@ -35,12 +32,10 @@ void	push_if_not_lis(t_stack **stack_a, t_stack **stack_b, int length)
 		}
 		i++;
 	}
-	if (!ft_is_sorted(tmp))
-		sort_three(&tmp);
 	*stack_a = tmp;
 }
 
-void	set_target(t_stack *stack_a, t_stack *stack_b)
+static void	set_target(t_stack *stack_a, t_stack *stack_b)
 {
 	t_stack *tmp_a;
 	int		samllestbig_nb;
@@ -54,7 +49,7 @@ void	set_target(t_stack *stack_a, t_stack *stack_b)
 			if (stack_b->num < tmp_a->num && tmp_a->num < samllestbig_nb)
 			{
 				samllestbig_nb =  tmp_a->num;
-				stack_a->target = tmp_a;			
+				stack_b->target = tmp_a;			
 			}
 			tmp_a = tmp_a->next;
 		}
@@ -64,7 +59,7 @@ void	set_target(t_stack *stack_a, t_stack *stack_b)
 	}
 }
 
-void set_price(t_stack *stack_a, t_stack *stack_b)
+static void	set_price(t_stack *stack_a, t_stack *stack_b)
 {
 	int	la;
 	int lb;
@@ -84,44 +79,50 @@ void set_price(t_stack *stack_a, t_stack *stack_b)
 	} 
 }
 
-t_stack *set_sheapest(t_stack *satck_b)
+static t_stack *set_sheapest(t_stack *stack_b)
 {
 	int sheap;
 	t_stack *the_one;
 
 	sheap = 2147483647;
 	the_one = NULL;
-	while( satck_b)
+	while( stack_b)
 	{
-		if (satck_b->price_to_push < sheap)
+		if (stack_b->price_to_push < sheap)
 		{
-			the_one = satck_b;
-			sheap =satck_b->price_to_push;
+			the_one = stack_b;
+			sheap =stack_b->price_to_push;
 		}
-		satck_b->next;
+		 stack_b = stack_b->next;
 	}
 	if(the_one)
 		the_one->is_sheap = 1;
 	return (the_one);
-	
 }
-void push_swap(t_stack **stack_a, t_stack **stack_b, int length)
+void	push_swap(t_stack **stack_a, t_stack **stack_b, int length)
 {
 	t_stack	*sheap;
+	t_stack *petit;
 
-	if(length == 5)
-		sort_5();
+	if(length < 101)
+		sort_4_100(stack_a, stack_b, length);
 	else
-	{
 		push_if_not_lis(stack_a, stack_b, length);
-		while(stack_b)
-		{
-			set_target(*stack_a, *stack_b);
-			set_price(stack_a,stack_b);
-			sheap = set_sheapest(stack_b);
-			sort_sheapest_target(stack_a, stack_b, sheap);
-			
-		}
+	while(*stack_b)
+	{
+		set_target(*stack_a, *stack_b);
+		set_price(*stack_a, *stack_b);
+		sheap = set_sheapest(*stack_b);
+		sort_sheapest_target(stack_a, stack_b, sheap);
+		sheap->is_sheap = 0;
 	}
-	
+	set_index(*stack_a);
+	petit = smallest(*stack_a);
+	while (*stack_a != petit)
+	{
+		if(petit->upofmed)
+			ra(stack_a, 1);
+		else
+			rra(stack_a, 1);
+	}
 }
