@@ -6,13 +6,13 @@
 /*   By: ymomen <ymomen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 14:38:00 by ymomen            #+#    #+#             */
-/*   Updated: 2023/12/24 17:50:15 by ymomen           ###   ########.fr       */
+/*   Updated: 2023/12/27 19:41:07 by ymomen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	max(int a, int b)
+int	max(int a, int b)
 {
 	if (a > b)
 		return (a);

@@ -6,7 +6,7 @@
 /*   By: ymomen <ymomen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 21:57:01 by ymomen            #+#    #+#             */
-/*   Updated: 2023/12/26 00:50:28 by ymomen           ###   ########.fr       */
+/*   Updated: 2023/12/27 16:08:56 by ymomen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,14 +49,13 @@ static void loop_rb_rrb(t_stack **stack_b, t_stack *sheap)
 	}
 }
 
-void	sort_sheapest_target(t_stack **stack_a,t_stack **stack_b, t_stack *sheap)
+void	sort_sheapest_target(t_stack **stack_a,t_stack **stack_b, t_stack *cheap)
 {
-	if ((sheap->upofmed) && (sheap->target->upofmed))
-		loop_rr(stack_a, stack_b, sheap);
-	else if (!(sheap->upofmed) && !(sheap->target->upofmed))
-		loop_rrr(stack_a, stack_b, sheap);
-	loop_rb_rrb(stack_b, sheap);
-	loop_ra_rra(stack_a, sheap->target);
-	sheap->is_sheap = 0;	
+	if ((cheap->upofmed) && (cheap->target->upofmed))
+		loop_rr(stack_a, stack_b, cheap);
+	else if (!(cheap->upofmed) && !(cheap->target->upofmed))
+		loop_rrr(stack_a, stack_b, cheap);
+	loop_rb_rrb(stack_b, cheap);	
+	loop_ra_rra(stack_a, cheap->target);
 	pa(stack_a, stack_b, 1);
 }

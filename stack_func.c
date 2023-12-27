@@ -6,7 +6,7 @@
 /*   By: ymomen <ymomen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 18:42:07 by ymomen            #+#    #+#             */
-/*   Updated: 2023/12/26 00:29:45 by ymomen           ###   ########.fr       */
+/*   Updated: 2023/12/27 06:49:33 by ymomen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ t_stack	*biggest(t_stack *stack)
 	i = -2147483648;
 	while (stack)
 	{
-		if (stack->num > i)
+		if (stack->num >= i)
 		{
 			i = stack->num;
 			biggest_one = stack;

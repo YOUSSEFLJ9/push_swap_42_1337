@@ -6,7 +6,7 @@
 /*   By: ymomen <ymomen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 18:39:33 by ymomen            #+#    #+#             */
-/*   Updated: 2023/12/26 16:08:22 by ymomen           ###   ########.fr       */
+/*   Updated: 2023/12/27 20:05:27 by ymomen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,12 @@ typedef struct s_stack
 	int				price_to_push;
 	bool			is_sheap;
 	bool			lis;
-	bool			upofmed;
+	int				upofmed;
 }	t_stack;
 
 /* FUNCTIONS */
+int		max(int a, int b);
+int 	min(int a, int b);
 char	**freet(char **ptr, int i);
 char	**ft_split(char const *s, char c);
 int		ft_isdigit(int c);
@@ -66,7 +68,7 @@ void	sort_three(t_stack **stack);
 void	sort_sheapest_target(t_stack **stack_a,t_stack **stack_b, t_stack *sheap);
 void	lis(t_stack *stack, int elements);
 void	push_if_not_lis(t_stack **stack_a, t_stack **stack_b, int length);
-void	sort_4_100(t_stack **stack_a, t_stack **stack_b, int length);
+void	sort_4_20(t_stack **stack_a, t_stack **stack_b, int length);
 void	push_swap(t_stack **stack_a, t_stack **stack_b, int length);
 
 

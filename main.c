@@ -6,7 +6,7 @@
 /*   By: ymomen <ymomen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 15:24:51 by ymomen            #+#    #+#             */
-/*   Updated: 2023/12/26 16:12:35 by ymomen           ###   ########.fr       */
+/*   Updated: 2023/12/27 18:35:13 by ymomen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	main(int ac, char **av)
 			}
 		else
 		{	
-			lis(stack_a, length);
+			
 			push_swap(&stack_a, &stack_b, length);
 		}
 	}
@@ -51,13 +51,12 @@ int	main(int ac, char **av)
 	// 	printf("the stack now is sorted :)\n");
 	while (stack_a)
 	{
-		// printf("|%d|--->|%s|", stack_a->num, stack_a->upofmed ? "yes" : "no");
+		//printf("%d\n", stack_a->num);
 		pop_stack(&stack_a);
 	}
 	// printf("\n_______________________________\n");
 	while (stack_b)
 	{
-		// printf("|%d|--->|%s|", stack_b->num, stack_b->upofmed ? "yes" : "no");
 		pop_stack(&stack_b);
 	}
 	return (0);

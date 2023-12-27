@@ -6,7 +6,7 @@
 /*   By: ymomen <ymomen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 18:31:41 by ymomen            #+#    #+#             */
-/*   Updated: 2023/12/25 17:46:44 by ymomen           ###   ########.fr       */
+/*   Updated: 2023/12/27 18:05:13 by ymomen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,14 @@ static int	push(t_stack **to, t_stack **from)
 
 void	pa(t_stack **stack_a, t_stack **stack_b, bool print)
 {
-	if (push(stack_a, stack_b) && print)
+	push(stack_a, stack_b);
+	if (print)
 		write(1, "pa\n", 3);
 }
 
 void	pb(t_stack **stack_b, t_stack **stack_a, bool print)
 {
-	if (push(stack_b, stack_a) && print)
+	push(stack_b, stack_a);
+	if (print)
 		write(1, "pb\n", 3);
 }

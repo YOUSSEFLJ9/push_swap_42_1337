@@ -6,7 +6,7 @@
 /*   By: ymomen <ymomen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 18:50:14 by ymomen            #+#    #+#             */
-/*   Updated: 2023/12/26 16:08:05 by ymomen           ###   ########.fr       */
+/*   Updated: 2023/12/27 19:50:39 by ymomen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	push_if_not_lis(t_stack **stack_a, t_stack **stack_b, int length)
 static void	set_target(t_stack *stack_a, t_stack *stack_b)
 {
 	t_stack *tmp_a;
+	t_stack *target;
 	int		samllestbig_nb;
 
 	while (stack_b)
@@ -49,12 +50,14 @@ static void	set_target(t_stack *stack_a, t_stack *stack_b)
 			if (stack_b->num < tmp_a->num && tmp_a->num < samllestbig_nb)
 			{
 				samllestbig_nb =  tmp_a->num;
-				stack_b->target = tmp_a;			
+				target = tmp_a;			
 			}
 			tmp_a = tmp_a->next;
 		}
 		if ( samllestbig_nb == 2147483647)
 			stack_b->target = smallest(stack_a);
+		else
+			stack_b->target = target;
 		stack_b = stack_b->next;
 	}
 }
@@ -68,6 +71,8 @@ static void	set_price(t_stack *stack_a, t_stack *stack_b)
 	lb = set_index(stack_b);
 	while(stack_b)
 	{
+		if()
+		else
 		stack_b->price_to_push = stack_b->index;
 		if(!(stack_b->upofmed))
 			stack_b->price_to_push = lb - stack_b->index;
@@ -81,17 +86,17 @@ static void	set_price(t_stack *stack_a, t_stack *stack_b)
 
 static t_stack *set_sheapest(t_stack *stack_b)
 {
-	int sheap;
+	int cheap;
 	t_stack *the_one;
 
-	sheap = 2147483647;
+	cheap = 2147483647;
 	the_one = NULL;
-	while( stack_b)
+	while (stack_b)
 	{
-		if (stack_b->price_to_push < sheap)
+		if (stack_b->price_to_push < cheap)
 		{
 			the_one = stack_b;
-			sheap =stack_b->price_to_push;
+			cheap =stack_b->price_to_push;
 		}
 		 stack_b = stack_b->next;
 	}
@@ -99,22 +104,29 @@ static t_stack *set_sheapest(t_stack *stack_b)
 		the_one->is_sheap = 1;
 	return (the_one);
 }
+
 void	push_swap(t_stack **stack_a, t_stack **stack_b, int length)
 {
-	t_stack	*sheap;
+	t_stack	*cheap;
 	t_stack *petit;
+	int i = 0;
 
-	if(length < 101)
-		sort_4_100(stack_a, stack_b, length);
+	if(length < 20)
+		sort_4_20(stack_a, stack_b, length);
 	else
+	{
+		// int raa = optimise_lis(stack_a, length);
+		// while(raa-- != 0)
+		// 	ra(stack_a, 1);
+		lis(*stack_a, length);
 		push_if_not_lis(stack_a, stack_b, length);
+	}
 	while(*stack_b)
 	{
 		set_target(*stack_a, *stack_b);
 		set_price(*stack_a, *stack_b);
-		sheap = set_sheapest(*stack_b);
-		sort_sheapest_target(stack_a, stack_b, sheap);
-		sheap->is_sheap = 0;
+		cheap = set_sheapest(*stack_b);
+		sort_sheapest_target(stack_a, stack_b, cheap);
 	}
 	set_index(*stack_a);
 	petit = smallest(*stack_a);
@@ -125,4 +137,4 @@ void	push_swap(t_stack **stack_a, t_stack **stack_b, int length)
 		else
 			rra(stack_a, 1);
 	}
-}
+} 
