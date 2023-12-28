@@ -6,7 +6,7 @@
 /*   By: ymomen <ymomen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 18:33:01 by ymomen            #+#    #+#             */
-/*   Updated: 2023/12/25 17:51:03 by ymomen           ###   ########.fr       */
+/*   Updated: 2023/12/27 18:47:23 by ymomen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,18 +34,22 @@ static int	rotate(t_stack **stack)
 
 void	ra(t_stack **stack_a, bool print)
 {
-	if (rotate(stack_a) && print)
+	rotate(stack_a);
+	if (print)
 		write(1, "ra\n", 3);
 }
 
 void	rb(t_stack **stack_b, bool print)
 {
-	if (rotate(stack_b) && print)
+	rotate(stack_b);
+	if (print)
 		write(1, "rb\n", 3);
 }
 
 void	rr(t_stack **stack_a, t_stack **stack_b, bool print)
 {
-	if ((rotate(stack_a) ||rotate(stack_b)) && print)
+	rotate(stack_a);
+	rotate(stack_b);
+	if (print)
 		write(1, "rr\n", 3);
 }

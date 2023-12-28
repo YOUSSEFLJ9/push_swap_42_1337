@@ -6,7 +6,7 @@
 /*   By: ymomen <ymomen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 18:42:07 by ymomen            #+#    #+#             */
-/*   Updated: 2023/12/25 21:23:58 by ymomen           ###   ########.fr       */
+/*   Updated: 2023/12/27 06:49:33 by ymomen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ static t_stack	*new_node(int num)
 	node->is_sheap = 0;
 	node->index = index;
 	node->lis = 0;
+	node->price_to_push = 0;
 	index++;
 	return (node);
 }
@@ -100,7 +101,7 @@ t_stack	*biggest(t_stack *stack)
 	i = -2147483648;
 	while (stack)
 	{
-		if (stack->num > i)
+		if (stack->num >= i)
 		{
 			i = stack->num;
 			biggest_one = stack;

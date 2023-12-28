@@ -6,7 +6,7 @@
 /*   By: ymomen <ymomen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 15:24:51 by ymomen            #+#    #+#             */
-/*   Updated: 2023/12/25 17:59:23 by ymomen           ###   ########.fr       */
+/*   Updated: 2023/12/28 18:42:09 by ymomen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,46 +21,26 @@ int	main(int ac, char **av)
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
-	int		elements;
+	int		length;
 
 	stack_a = NULL;
 	stack_b = NULL;
-	elements = 0;
-	//atexit(vv);
+	length = 0;
 	if (ac == 1)
 		return (0);
-	elements = ft_init_stack_a(&stack_a, ++av);
+	length = ft_init_stack_a(&stack_a, ++av);
 	if (ft_is_sorted(stack_a))
 		exit(0);
 	else
 	{
-		if (elements == 2)
+		if (length == 2)
 			sa(&stack_a, 1);
-		else if (elements == 3)
-			{
-				set_index(stack_a);
-				sort_three(&stack_a);
-			}
+		else if (length == 3)
+			sort_three(&stack_a);
 		else
-		{	
-			lis(stack_a, elements);
-			set_index(stack_a);
-			push_if_not_lis(&stack_a, &stack_b, elements);
-		}
+			push_swap(&stack_a, &stack_b, length);
 	}
-	//printf("the number of elemnt is :%d\n", elements);
-	//if (ft_is_sorted(stack_a))
-		//printf("the stack now is sorted :)\n");
-	// while (stack_a)
-	// {
-	// 	printf("|%d|--->|%s|", stack_a->num, stack_a->upofmed ? "yes" : "no");
-	// 	pop_stack(&stack_a);
-	// }
-	// printf("\n_______________________________\n");
-	// while (stack_b)
-	// {
-	// 	printf("|%d|--->|%s|", stack_b->num, stack_b->upofmed ? "yes" : "no");
-	// 	pop_stack(&stack_b);
-	// }
+	while (stack_a)
+		pop_stack(&stack_a);
 	return (0);
 }

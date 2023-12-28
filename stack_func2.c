@@ -6,7 +6,7 @@
 /*   By: ymomen <ymomen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 15:31:16 by ymomen            #+#    #+#             */
-/*   Updated: 2023/12/25 18:13:00 by ymomen           ###   ########.fr       */
+/*   Updated: 2023/12/28 18:40:59 by ymomen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ int	search_wrong_input(char **av)
 	while (av[i])
 	{
 		j = 0;
+		if (!ft_isdigit(av[i][j]) && !av[i][j + 1])
+			return (0);
 		while (av[i][j])
 		{
 			if (!ft_isdigit(av[i][j]) && av[i][j] && av[i][j] != '+'
@@ -93,14 +95,13 @@ int	set_index(t_stack *stack)
 		tmp->index = i++;
 		tmp = tmp->next;
 	}
-	tmp = stack;
-	while (tmp)
+	while (stack)
 	{
-		if ((tmp->index) <= (i / 2))
-			tmp->upofmed = 1;
+		if ((stack->index) <= (i / 2))
+			stack->uphealf = 1;
 		else
-			tmp->upofmed = 0;
-		tmp = tmp->next;
+			stack->uphealf = 0;
+		stack = stack->next;
 	}
 	return (i);
 }

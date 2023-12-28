@@ -6,7 +6,7 @@
 /*   By: ymomen <ymomen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 18:30:17 by ymomen            #+#    #+#             */
-/*   Updated: 2023/12/25 17:50:25 by ymomen           ###   ########.fr       */
+/*   Updated: 2023/12/27 16:19:41 by ymomen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,18 +31,22 @@ static int	swap(t_stack **stack)
 
 void	sa(t_stack **stack_a, bool print)
 {
-	if (swap(stack_a) && print)
+	swap(stack_a);
+	if (print)
 		write(1, "sa\n", 3);
 }
 
 void	sb(t_stack **stack_b, bool print)
 {
-	if (swap(stack_b) && print)
+	swap(stack_b);
+	if (print)
 		write(1, "sb\n", 3);
 }
 
 void	ss(t_stack **stack_a, t_stack **stack_b, bool print)
 {
-	if ((swap(stack_a) || swap(stack_b))&& print)
+	swap(stack_a);
+	swap(stack_b);
+	if (print)
 		write(1, "ss\n", 3);
 }
