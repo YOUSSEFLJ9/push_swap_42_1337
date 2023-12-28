@@ -6,7 +6,7 @@
 /*   By: ymomen <ymomen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 18:39:33 by ymomen            #+#    #+#             */
-/*   Updated: 2023/12/27 20:05:27 by ymomen           ###   ########.fr       */
+/*   Updated: 2023/12/28 08:21:39 by ymomen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,13 @@ typedef struct s_stack
 	bool			is_sheap;
 	bool			lis;
 	int				upofmed;
+	bool			uphealf;
 }	t_stack;
 
 /* FUNCTIONS */
-int		max(int a, int b);
-int 	min(int a, int b);
+int nextbegger(int index_a, t_stack *stack_a);
+int		maxm(int a, int b);
+int 	minm(int a, int b, int la, int lb);
 char	**freet(char **ptr, int i);
 char	**ft_split(char const *s, char c);
 int		ft_isdigit(int c);

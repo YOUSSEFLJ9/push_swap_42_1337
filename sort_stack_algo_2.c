@@ -6,7 +6,7 @@
 /*   By: ymomen <ymomen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/25 21:57:01 by ymomen            #+#    #+#             */
-/*   Updated: 2023/12/27 16:08:56 by ymomen           ###   ########.fr       */
+/*   Updated: 2023/12/28 15:37:21 by ymomen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static void loop_ra_rra(t_stack **stack_a, t_stack *target)
 {
 	while(*stack_a != target)
 	{
-		if(target->upofmed)
+		if(target->uphealf)
 			ra(stack_a, 1);
 		else
 			rra(stack_a, 1);
@@ -42,7 +42,7 @@ static void loop_rb_rrb(t_stack **stack_b, t_stack *sheap)
 {
 	while(*stack_b != sheap)
 	{
-		if(sheap->upofmed)
+		if(sheap->uphealf)
 			rb(stack_b, 1);
 		else
 			rrb(stack_b, 1);
@@ -51,9 +51,9 @@ static void loop_rb_rrb(t_stack **stack_b, t_stack *sheap)
 
 void	sort_sheapest_target(t_stack **stack_a,t_stack **stack_b, t_stack *cheap)
 {
-	if ((cheap->upofmed) && (cheap->target->upofmed))
+	if ((cheap->uphealf) && (cheap->target->uphealf))
 		loop_rr(stack_a, stack_b, cheap);
-	else if (!(cheap->upofmed) && !(cheap->target->upofmed))
+	else if (!(cheap->uphealf) && !(cheap->target->uphealf))
 		loop_rrr(stack_a, stack_b, cheap);
 	loop_rb_rrb(stack_b, cheap);	
 	loop_ra_rra(stack_a, cheap->target);

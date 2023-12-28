@@ -6,13 +6,13 @@
 /*   By: ymomen <ymomen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 14:38:00 by ymomen            #+#    #+#             */
-/*   Updated: 2023/12/27 19:41:07 by ymomen           ###   ########.fr       */
+/*   Updated: 2023/12/28 09:47:46 by ymomen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	max(int a, int b)
+int	maxm(int a, int b)
 {
 	if (a > b)
 		return (a);
@@ -94,7 +94,7 @@ void	lis(t_stack *stack, int elements)
 		while (i > j)
 		{
 			if (b->num < a->num)
-				ptr[i] = max(ptr[j] +1, ptr[i]);
+				ptr[i] = maxm(ptr[j] + 1, ptr[i]);
 			b = b->next;
 			j++;
 		}

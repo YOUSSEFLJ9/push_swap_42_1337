@@ -6,7 +6,7 @@
 /*   By: ymomen <ymomen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 19:41:42 by ymomen            #+#    #+#             */
-/*   Updated: 2023/12/27 19:39:52 by ymomen           ###   ########.fr       */
+/*   Updated: 2023/12/28 15:48:02 by ymomen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,22 @@ void	sort_4_20(t_stack **stack_a, t_stack **stack_b, int length)
 		sort_three(&tmp);
 	*stack_a = tmp;
 }
-void min(int a, int b)
+
+
+int nextbegger(int index_a, t_stack *stack_a)
 {
-	if (a > b)
-		return (b);
-	return (a);
+	int		nextbig;
+	
+	while(index_a != stack_a->index)
+		stack_a = stack_a->next;
+	nextbig = stack_a->num;
+	while (stack_a)
+	{
+		if (stack_a->num > nextbig)
+		{
+			return (stack_a->num);		
+		}
+		stack_a = stack_a->next;
+	}
+	return(nextbig);		
 }
