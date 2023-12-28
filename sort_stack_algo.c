@@ -6,7 +6,7 @@
 /*   By: ymomen <ymomen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 18:50:14 by ymomen            #+#    #+#             */
-/*   Updated: 2023/12/28 18:37:51 by ymomen           ###   ########.fr       */
+/*   Updated: 2023/12/28 19:43:25 by ymomen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,16 @@
 
 void	push_if_not_lis(t_stack **stack_a, t_stack **stack_b, int length)
 {
-	t_stack	*tmp;
 	int		i;
 	int		med;
 
 	i = 0;
 	med = (biggest(*stack_a)->num + smallest(*stack_a)->num) / 2;
-	tmp = *stack_a;
-	while (tmp && i++)
+	while (*stack_a)
 	{
-		if (tmp->lis == 0)
+		if ((*stack_a)->lis == 0)
 		{
-			pb(stack_b, &tmp, 1);
+			pb(stack_b, stack_a, 1);
 			set_index(*stack_a);
 			if ((*stack_b)->num >= med)
 				rb(stack_b, 1);
@@ -33,12 +31,12 @@ void	push_if_not_lis(t_stack **stack_a, t_stack **stack_b, int length)
 		else
 		{
 			if (i < length)
-				ra(&tmp, 1);
+				ra(stack_a, 1);
 			else
 				break ;
 		}
+		i++;
 	}
-	*stack_a = tmp;
 }
 
 static void	set_target(t_stack *stack_a, t_stack *stack_b)
