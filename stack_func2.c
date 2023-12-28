@@ -6,7 +6,7 @@
 /*   By: ymomen <ymomen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 15:31:16 by ymomen            #+#    #+#             */
-/*   Updated: 2023/12/28 08:24:40 by ymomen           ###   ########.fr       */
+/*   Updated: 2023/12/28 18:40:59 by ymomen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,16 +97,10 @@ int	set_index(t_stack *stack)
 	}
 	while (stack)
 	{
-		if((stack->index) <= (i / 2))
+		if ((stack->index) <= (i / 2))
 			stack->uphealf = 1;
 		else
 			stack->uphealf = 0;
-		if ((stack->index) <= (i *(1 / 3)))
-			stack->upofmed = 1;
-		else if ((stack->index) <= (i *(2 / 3)))
-			stack->upofmed = 2;
-		else
-			stack->upofmed = 3;
 		stack = stack->next;
 	}
 	return (i);

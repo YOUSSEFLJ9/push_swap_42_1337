@@ -1,2 +1,11 @@
 token
 .*
+checker_Mac
+push_swap
+pro_checker
+push_swap_visualizer
+push_swap_test.sh
+visualizer
+tester.py
+traces.txt
+trace.txt
