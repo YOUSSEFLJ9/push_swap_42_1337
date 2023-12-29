@@ -6,7 +6,7 @@
 /*   By: ymomen <ymomen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 18:50:14 by ymomen            #+#    #+#             */
-/*   Updated: 2023/12/28 19:43:25 by ymomen           ###   ########.fr       */
+/*   Updated: 2023/12/29 13:30:50 by ymomen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	push_if_not_lis(t_stack **stack_a, t_stack **stack_b, int length)
 	int		med;
 
 	i = 0;
+	lis(*stack_a, length);
 	med = (biggest(*stack_a)->num + smallest(*stack_a)->num) / 2;
 	while (*stack_a)
 	{
@@ -115,10 +116,7 @@ void	push_swap(t_stack **stack_a, t_stack **stack_b, int length)
 	if (length < 20)
 		sort_4_20(stack_a, stack_b, length);
 	else
-	{
-		lis(*stack_a, length);
 		push_if_not_lis(stack_a, stack_b, length);
-	}
 	while (*stack_b)
 	{
 		set_target(*stack_a, *stack_b);
@@ -135,4 +133,4 @@ void	push_swap(t_stack **stack_a, t_stack **stack_b, int length)
 		else
 			rra(stack_a, 1);
 	}
-} 
+}

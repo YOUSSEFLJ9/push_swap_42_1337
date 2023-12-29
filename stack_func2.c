@@ -6,7 +6,7 @@
 /*   By: ymomen <ymomen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 15:31:16 by ymomen            #+#    #+#             */
-/*   Updated: 2023/12/28 19:32:14 by ymomen           ###   ########.fr       */
+/*   Updated: 2023/12/29 13:29:09 by ymomen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	ft_init_stack_a(t_stack **stack_a, char **av)
 		if (ft_strchr(*av, ' ') && --elements)
 		{
 			splited = ft_split(*av, ' ');
-			if (!splited)
+			if (!splited || ! search_wrong_input(splited))
 				error_and_exit(stack_a);
 			while (splited[i])
 				push_stack(stack_a, ft_atoi(splited[i++], stack_a));

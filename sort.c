@@ -6,7 +6,7 @@
 /*   By: ymomen <ymomen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/24 19:41:42 by ymomen            #+#    #+#             */
-/*   Updated: 2023/12/28 18:31:14 by ymomen           ###   ########.fr       */
+/*   Updated: 2023/12/29 13:34:33 by ymomen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,16 @@ void	sort_three(t_stack **stack_a)
 void	sort_4_20(t_stack **stack_a, t_stack **stack_b, int length)
 {
 	t_stack	*tmp;
+	int		med;
 
 	tmp = *stack_a;
+	med = (biggest(*stack_a)->num + smallest(*stack_a)->num) / 2;
 	while (length-- > 3)
 	{
 		pb(stack_b, &tmp, 1);
+		set_index(*stack_a);
+		if ((*stack_b)->num >= med)
+			rb(stack_b, 1);
 	}
 	if (!ft_is_sorted(tmp))
 		sort_three(&tmp);
