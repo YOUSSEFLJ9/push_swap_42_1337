@@ -6,7 +6,7 @@
 /*   By: ymomen <ymomen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 15:31:16 by ymomen            #+#    #+#             */
-/*   Updated: 2023/12/29 13:29:09 by ymomen           ###   ########.fr       */
+/*   Updated: 2023/12/30 00:39:27 by ymomen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ int	search_wrong_input(char **av)
 			if (!ft_isdigit(av[i][j]) && av[i][j] && av[i][j] != '+'
 				&& av[i][j] != '-' && av[i][j] != ' ')
 				return (0);
+				if ((av[i][j] != '+' || av[i][j] == '-') && !ft_isdigit(av[i][j + 1]))
+					return (0);
 			j++;
 		}
 		i++;
