@@ -6,7 +6,7 @@
 /*   By: ymomen <ymomen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 18:39:33 by ymomen            #+#    #+#             */
-/*   Updated: 2023/12/29 11:57:50 by ymomen           ###   ########.fr       */
+/*   Updated: 2023/12/29 23:12:13 by ymomen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 # include <stdlib.h>
 # include <limits.h>
 # include <stdbool.h>
-# include <stdio.h>
 /* STRUCT */
 typedef struct s_stack
 {
