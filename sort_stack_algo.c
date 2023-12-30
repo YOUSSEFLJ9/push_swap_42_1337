@@ -6,7 +6,7 @@
 /*   By: ymomen <ymomen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 18:50:14 by ymomen            #+#    #+#             */
-/*   Updated: 2023/12/29 19:19:51 by ymomen           ###   ########.fr       */
+/*   Updated: 2023/12/30 17:07:37 by ymomen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,11 +119,6 @@ void	push_swap(t_stack **stack_a, t_stack **stack_b, int length)
 		push_if_not_lis(stack_a, stack_b, length);
 	while (*stack_b)
 	{
-		if (*stack_b && (*stack_b)->next && (*stack_b)->next->next && (*stack_b)->num < ((*stack_b)->next->num) && (*stack_b)->num > ((*stack_b)->next->next->num))
-			{
-				sb(stack_b, 1);
-				continue;
-			}
 		set_target(*stack_a, *stack_b);
 		set_price(*stack_a, *stack_b);
 		cheap = set_sheapest(*stack_b);

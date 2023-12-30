@@ -6,7 +6,7 @@
 /*   By: ymomen <ymomen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 15:31:16 by ymomen            #+#    #+#             */
-/*   Updated: 2023/12/30 16:21:42 by ymomen           ###   ########.fr       */
+/*   Updated: 2023/12/30 17:03:12 by ymomen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ int	search_wrong_input(char **av)
 			if (!ft_isdigit(av[i][j]) && av[i][j] && av[i][j] != '+'
 				&& av[i][j] != '-' && av[i][j] != ' ')
 				return (0);
-			if ((av[i][j] == '+' || av[i][j] == '-') && !ft_isdigit(av[i][j + 1]))
+			if ((av[i][j] == '+' || av[i][j] == '-')
+				&& !ft_isdigit(av[i][j + 1]))
 				return (0);
 			j++;
 		}
@@ -42,7 +43,7 @@ int	search_wrong_input(char **av)
 int	ft_init_stack_a(t_stack **stack_a, char **av)
 {
 	int		i;
-	char	**splited;
+	char	**s;
 	int		elements;
 
 	elements = 0;
@@ -53,12 +54,12 @@ int	ft_init_stack_a(t_stack **stack_a, char **av)
 		i = 0;
 		if (ft_strchr(*av, ' ') && --elements)
 		{
-			splited = ft_split(*av, ' ');
-			if (!splited || ! search_wrong_input(splited))
+			s = ft_split(*av, ' ');
+			if (!s || ! search_wrong_input(s))
 				error_and_exit(stack_a);
-			while (splited[i])
-				push_stack(stack_a, ft_atoi(splited[i++], stack_a, splited), splited);
-			freet(splited, i);
+			while (s[i])
+				push_stack(stack_a, ft_atoi(s[i++], stack_a, s), s);
+			freet(s, i);
 		}
 		else
 			push_stack(stack_a, ft_atoi(*av, stack_a, NULL), NULL);

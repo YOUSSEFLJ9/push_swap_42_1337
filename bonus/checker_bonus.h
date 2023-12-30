@@ -6,7 +6,7 @@
 /*   By: ymomen <ymomen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 16:30:15 by ymomen            #+#    #+#             */
-/*   Updated: 2023/12/29 23:12:32 by ymomen           ###   ########.fr       */
+/*   Updated: 2023/12/30 17:00:19 by ymomen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <limits.h>
 
 /* FUNCTIONS */
-void	trate_command(t_stack **stack_a,t_stack **stack_b, char *line);
+void	trate_command(t_stack **stack_a, t_stack **stack_b, char *line);
 char	*read_and_getline(char *buf, int fd, char *line);
 void	free_it(char *str);
 char	*ft_strjoin(char *line, char *buf);

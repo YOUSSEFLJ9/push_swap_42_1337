@@ -6,7 +6,7 @@
 /*   By: ymomen <ymomen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 20:26:46 by ymomen            #+#    #+#             */
-/*   Updated: 2023/12/30 16:20:50 by ymomen           ###   ########.fr       */
+/*   Updated: 2023/12/30 17:03:34 by ymomen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,12 @@ int	ft_atoi(const char *str, t_stack **stack, char **spt)
 	return (nb * sing);
 }
 
-void freesplit(t_stack **stack, char **str)
+void	freesplit(t_stack **stack, char **str)
 {
 	int	i;
 
 	i = 0;
-	while( str && str[i])
+	while (str && str[i])
 		i++;
 	freet(str, i);
 	error_and_exit(stack);

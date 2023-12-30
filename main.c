@@ -6,16 +6,11 @@
 /*   By: ymomen <ymomen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 15:24:51 by ymomen            #+#    #+#             */
-/*   Updated: 2023/12/29 13:29:42 by ymomen           ###   ########.fr       */
+/*   Updated: 2023/12/30 17:04:06 by ymomen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	vv(void)
-{
-	system("leaks push_swap");
-}
 
 int	main(int ac, char **av)
 {
@@ -26,7 +21,6 @@ int	main(int ac, char **av)
 	stack_a = NULL;
 	stack_b = NULL;
 	length = 0;
-	//atexit(vv);
 	if (ac == 1)
 		return (0);
 	length = ft_init_stack_a(&stack_a, ++av);
