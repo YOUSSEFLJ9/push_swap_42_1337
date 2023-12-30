@@ -6,13 +6,13 @@
 /*   By: ymomen <ymomen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 20:26:46 by ymomen            #+#    #+#             */
-/*   Updated: 2023/12/26 16:49:49 by ymomen           ###   ########.fr       */
+/*   Updated: 2023/12/30 16:20:50 by ymomen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_atoi(const char *str, t_stack **stack)
+int	ft_atoi(const char *str, t_stack **stack, char **spt)
 {
 	int	sing;
 	int	nb;
@@ -22,7 +22,7 @@ int	ft_atoi(const char *str, t_stack **stack)
 	sing = 1;
 	i = 0;
 	if (!str || !str[0])
-		error_and_exit(stack);
+		freesplit(stack, spt);
 	if (str[i] == '-' || str[i] == '+')
 	{
 		if (str[i++] == '-')
@@ -32,11 +32,22 @@ int	ft_atoi(const char *str, t_stack **stack)
 	{
 		if (nb > MAX_INT || (nb == MAX_INT && str[i] - '0' > 7 && sing == 1)
 			|| (nb == MAX_INT && str[i] - '0' > 8))
-			error_and_exit(stack);
+			freesplit(stack, spt);
 		nb = (nb * 10) + (str[i++] - 48);
 	}
 	if ((nb == 0 && !(str[0] == '0' || str[0] == '+' || str[0] == '-'))
 		|| (!ft_isdigit(str[i]) && str[i]))
-		error_and_exit(stack);
+		freesplit(stack, spt);
 	return (nb * sing);
+}
+
+void freesplit(t_stack **stack, char **str)
+{
+	int	i;
+
+	i = 0;
+	while( str && str[i])
+		i++;
+	freet(str, i);
+	error_and_exit(stack);
 }

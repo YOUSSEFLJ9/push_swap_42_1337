@@ -6,7 +6,7 @@
 /*   By: ymomen <ymomen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 18:39:33 by ymomen            #+#    #+#             */
-/*   Updated: 2023/12/29 23:12:13 by ymomen           ###   ########.fr       */
+/*   Updated: 2023/12/30 16:23:24 by ymomen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,8 @@ char	**freet(char **ptr, int i);
 char	**ft_split(char const *s, char c);
 int		ft_isdigit(int c);
 int		ft_strchr(const char *s, int c);
-int		ft_atoi(const char *str, t_stack **stack);
+void	freesplit(t_stack **stack, char **str);
+int		ft_atoi(const char *str, t_stack **stack, char **spt);
 int		search_wrong_input(char **av);
 /* STACK_ */
 t_stack	*biggest(t_stack *stack);
@@ -47,7 +48,7 @@ int		set_index(t_stack *stack);
 int		ft_is_sorted(t_stack *stack);
 int		ft_init_stack_a(t_stack **stack_a, char **av);
 int		pop_stack(t_stack **stack);
-int		push_stack(t_stack **stack, int num);
+int		push_stack(t_stack **stack, int num, char **spt);
 void	error_and_exit(t_stack **stack);
 /* COMMANDS */
 void	ss(t_stack **stack_a, t_stack **stack_b, bool print);

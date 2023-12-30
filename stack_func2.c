@@ -6,7 +6,7 @@
 /*   By: ymomen <ymomen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 15:31:16 by ymomen            #+#    #+#             */
-/*   Updated: 2023/12/30 00:39:27 by ymomen           ###   ########.fr       */
+/*   Updated: 2023/12/30 16:21:42 by ymomen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ int	search_wrong_input(char **av)
 			if (!ft_isdigit(av[i][j]) && av[i][j] && av[i][j] != '+'
 				&& av[i][j] != '-' && av[i][j] != ' ')
 				return (0);
-				if ((av[i][j] != '+' || av[i][j] == '-') && !ft_isdigit(av[i][j + 1]))
-					return (0);
+			if ((av[i][j] == '+' || av[i][j] == '-') && !ft_isdigit(av[i][j + 1]))
+				return (0);
 			j++;
 		}
 		i++;
@@ -57,11 +57,11 @@ int	ft_init_stack_a(t_stack **stack_a, char **av)
 			if (!splited || ! search_wrong_input(splited))
 				error_and_exit(stack_a);
 			while (splited[i])
-				push_stack(stack_a, ft_atoi(splited[i++], stack_a));
+				push_stack(stack_a, ft_atoi(splited[i++], stack_a, splited), splited);
 			freet(splited, i);
 		}
 		else
-			push_stack(stack_a, ft_atoi(*av, stack_a));
+			push_stack(stack_a, ft_atoi(*av, stack_a, NULL), NULL);
 		elements += i + 1;
 		av++;
 	}

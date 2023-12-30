@@ -6,7 +6,7 @@
 /*   By: ymomen <ymomen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 18:42:07 by ymomen            #+#    #+#             */
-/*   Updated: 2023/12/27 06:49:33 by ymomen           ###   ########.fr       */
+/*   Updated: 2023/12/30 16:24:21 by ymomen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static t_stack	*new_node(int num)
 	return (node);
 }
 
-int	push_stack(t_stack **stack, int num)
+int	push_stack(t_stack **stack, int num, char **spt)
 {
 	t_stack	*new;
 	t_stack	*head;
@@ -40,13 +40,13 @@ int	push_stack(t_stack **stack, int num)
 	while (head)
 	{
 		if (head->num == num)
-			error_and_exit(stack);
+			freesplit(stack, spt);
 		head = head->next;
 	}
-	new = new_node(num);
 	head = *stack;
+	new = new_node(num);
 	if (!new)
-		error_and_exit(stack);
+		freesplit(stack, spt);
 	else if (!*stack)
 		*stack = new;
 	else
