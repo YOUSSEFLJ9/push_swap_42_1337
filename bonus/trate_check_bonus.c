@@ -6,7 +6,7 @@
 /*   By: ymomen <ymomen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 21:51:13 by ymomen            #+#    #+#             */
-/*   Updated: 2023/12/30 17:01:17 by ymomen           ###   ########.fr       */
+/*   Updated: 2024/01/01 03:04:10 by ymomen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,5 @@ void	trate_command(t_stack **stack_a, t_stack **stack_b, char *line)
 			;
 		error_and_exit(stack_a);
 	}
-	else
-		free(line);
+	free(line);
 }

@@ -6,7 +6,7 @@
 /*   By: ymomen <ymomen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 00:32:36 by ymomen            #+#    #+#             */
-/*   Updated: 2023/12/29 17:27:42 by ymomen           ###   ########.fr       */
+/*   Updated: 2024/01/01 02:51:36 by ymomen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,14 +64,17 @@ char	*get_next_line(int fd)
 
 	line = NULL;
 	endl = 0;
-	if ((read(fd, buf, 0) == -1) || (OPEN_MAX < fd || fd < 0))
+	if ((OPEN_MAX <= fd || fd < 0) || BUFFER_SIZE <= 0
+		|| BUFFER_SIZE >= INT_MAX)
+		return (NULL);
+	if (read(fd, buf, 0) == -1)
 		return (shift(buf, BUFFER_SIZE), NULL);
 	if (*buf != 0)
 	{
 		line = ft_strjoin(line, buf);
 		if (!line)
 			return (NULL);
-		endl = ft_strchr(buf, BUFFER_SIZE);
+		endl = ft_strchr_1(buf, BUFFER_SIZE);
 		if (!endl)
 			shift(buf, BUFFER_SIZE);
 		else

@@ -6,7 +6,7 @@
 /*   By: ymomen <ymomen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 00:32:39 by ymomen            #+#    #+#             */
-/*   Updated: 2023/12/29 17:27:36 by ymomen           ###   ########.fr       */
+/*   Updated: 2024/01/01 02:49:22 by ymomen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ int	ft_strlen(char *s)
 	return (i);
 }
 
-void	shift(char *buf, int endl)
+void	shift(char *buf, size_t endl)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	while (endl < BUFFER_SIZE && buf[endl])
